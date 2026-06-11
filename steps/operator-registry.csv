@@ -1,0 +1,10 @@
+operator_name,operator_code,sender_domain,type_of_flight,tier,manages_permits,credit_status,default_services,payment_profile,notes
+Falcon Crest Executive,FCX,falconcrest-exec.example,Commercial Non-Sched (Part 135),T1,yes,OK,handling;ground_transport,CREDIT,High volume; stable subject format; crew pickup always requested
+Adriatic Wings,ADW,adriaticwings.example,Commercial Non-Sched (Part 135),T2,yes,OK,handling;ground_transport;hotel;catering,CREDIT,Full-service trips; usually specifies its own hotel
+Meridian Air Charter,MAC,meridian-charter.example,Commercial (Part 135),T2,yes,OK,handling;ground_transport,CREDIT,
+Solaris Jet Group,SJG,solarisjet.example,Private (Part 91),T2,yes,OK,handling,CREDIT,Owner-flown; minimal services
+Northern Air Command,NAC,northern-air-command.example,Military,T3,no,N/A,handling,CREDIT,DO NOT auto-handle: permits and clearances run through government channels
+Republic Air Wing,RAW,republic-air-wing.example,Diplomatic/State,T3,no,N/A,handling,CREDIT,DO NOT auto-handle: clearances via foreign ministry
+Vega Aviation Services,VAS,vega-aviation.example,Private (Part 91),T4,yes,HOLD,handling,CREDIT,Credit on HOLD; Finance must clear before any provider is contacted
+Liberty Jet Partners,LJP,libertyjet.example,Commercial Non-Sched (Part 135),T2,yes,OK,handling,AIRCARD,US-Aircard payer; CC accounting@ at US stations (matrix rule 2)
+Cascade Air LLC,CSA,cascadeair.example,Private (Part 91),T3,yes,OK,handling,UNKNOWN,Payment profile not on file; CC accounting@ marked TBC at US stations (matrix rule 3)

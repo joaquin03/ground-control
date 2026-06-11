@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ground Control - an AI operator for the trip-support desk</title>
+  <meta name="description" content="Ground Control reads each inbound ops email, runs it through a fixed decision spine, and returns drafted work or a routed escalation. Built with the Interpretable Context Methodology." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <!-- nav -->
+  <nav class="nav">
+    <div class="shell">
+      <a class="brand" href="index.html">
+        <span class="mk" aria-hidden="true"></span>
+        <span>
+          <span class="nm">Ground Control</span>
+          <span class="sub" style="display:block">Apex Trip Support</span>
+        </span>
+      </a>
+      <div class="links">
+        <a href="#problem">What it is</a>
+        <a href="#spine">How it works</a>
+        <a href="#trust">Security</a>
+        <a href="#eval">Tested</a>
+      </div>
+      <a class="btn btn-primary cta" href="console.html">Open the console <span class="arr" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </nav>
+
+  <!-- hero -->
+  <header class="hero">
+    <div class="shell">
+      <div class="reveal in">
+        <p class="eyebrow">The operator method, running</p>
+        <h1>One ops email in. <span class="em">Finished work</span> or a <span class="em">clean flag</span> out.</h1>
+        <p class="lede">Ground Control reads each inbound, runs it through a fixed decision spine, and returns drafted provider emails or a routed escalation. It decides and acts. It never hands the question back.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="console.html">Open the console <span class="arr" aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn-ghost" href="#method">See the method</a>
+        </div>
+      </div>
+      <div class="reveal in" id="hero-artifact" aria-label="A real decision card produced by the operator"></div>
+    </div>
+  </header>
+
+  <!-- stat band -->
+  <section class="statband" aria-label="Sample corpus results">
+    <div class="shell" id="statband">
+      <div class="s"><div class="n" data-stat="total">29</div><div class="l">Inbound emails</div></div>
+      <div class="s go"><div class="n" data-stat="handle">13</div><div class="l">Handled end to end</div></div>
+      <div class="s at"><div class="n" data-stat="escalate">14</div><div class="l">Escalated with a brief</div></div>
+      <div class="s"><div class="n" data-stat="drop">2</div><div class="l">Dropped as noise</div></div>
+      <div class="s"><div class="n" data-stat="drafts">34</div><div class="l">Emails drafted</div></div>
+      <div class="s"><div class="n" data-stat="ops">10</div><div class="l">Operations opened</div></div>
+    </div>
+  </section>
+
+  <!-- problem -->
+  <section class="band problem" id="problem">
+    <div class="shell">
+      <div class="reveal">
+        <p class="eyebrow">What a trip-support desk is</p>
+        <h2>A business jet cannot just land and park.</h2>
+        <p class="intro">When a private or charter aircraft flies, almost nothing at the airport is automatic. Every stop is arranged in advance, by email, one flight at a time, around the clock. That arranging is a trip-support desk.</p>
+        <div class="stops">
+          <div class="grp">
+            <div class="gl"><span class="badge handle"><span class="dot"></span>The desk arranges</span></div>
+            <ul>
+              <li>Ground handling <span>parking, marshalling, crew and passenger steps</span></li>
+              <li>Ground transport <span>cars and vans for crew and passengers</span></li>
+              <li>Crew hotels <span>rooms near the field for required rest</span></li>
+              <li>Catering <span>meals delivered to the aircraft on stand</span></li>
+            </ul>
+          </div>
+          <div class="grp">
+            <div class="gl"><span class="badge escalate"><span class="dot"></span>The desk hands off</span></div>
+            <ul>
+              <li>Permits <span>overflight and landing clearances</span></li>
+              <li>Fuel <span>uplift priced through a multi-broker quote</span></li>
+              <li>Flight plan <span>route and weather, built in specialist software</span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="pain">The inbox mixes real trip requests, last-minute changes, provider replies, and a lot of noise. Each message is a decision made under time pressure. Get a detail wrong, cancel booked work, or miss a credit hold, and it costs money or a client. <b>Ground Control is the operator that triages and runs that inbox.</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- method -->
+  <section class="band method" id="method">
+    <div class="shell">
+      <div class="reveal">
+        <div class="grid">
+          <div>
+            <p class="lead">The desk is not one giant prompt. It is a folder. Each file owns <span class="hl">one job</span>, the spine reads them in order, and the route falls out of the <span class="hl">first gate that fires</span>.</p>
+            <div class="points">
+              <div class="pt"><div class="k">01</div><div class="t"><b>Folders as architecture.</b><span>Identity, rules, steps, templates. One file, one responsibility, read at one step of the sequence.</span></div></div>
+              <div class="pt"><div class="k">02</div><div class="t"><b>A spine, not a vibe.</b><span>Nine ordered gates. The first one that fires picks the route. The path it took is the explanation.</span></div></div>
+              <div class="pt"><div class="k">03</div><div class="t"><b>Escalate over invent.</b><span>When a check fails it stops and briefs a human. It drafts, a human sends. It never contacts a provider itself.</span></div></div>
+            </div>
+          </div>
+          <aside class="onerule">
+            <div class="k">The one rule</div>
+            <p class="r">When uncertain, <b>escalate with a briefing.</b> Never guess in the client's name, never silently cancel.</p>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- spine -->
+  <section class="band" id="spine" style="padding-top:0">
+    <div class="shell">
+      <div class="sec-head reveal">
+        <h2>Nine gates. One route out.</h2>
+        <p>Every inbound runs the same sequence. Steps in green were cleared; a branch in gold is where an email can leave the line early. The route is whatever the first firing gate decides.</p>
+      </div>
+      <div class="spine-flow" id="spine-flow"></div>
+      <div class="spine-out">
+        <div class="o"><div class="h"><span class="badge handle"><span class="dot"></span>Handle</span></div><p>Reaches the end. Operation opened, provider emails drafted, client reply ready.</p></div>
+        <div class="o"><div class="h"><span class="badge escalate"><span class="dot"></span>Escalate</span></div><p>A gate fires. It stops, drafts nothing, and routes a briefing to the right human queue.</p></div>
+        <div class="o"><div class="h"><span class="badge drop"><span class="dot"></span>Drop</span></div><p>Filtered at the door. Newsletter, bounce, billing. Logged and dropped, no time spent.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- routes -->
+  <section class="band" id="routes" style="padding-top:0">
+    <div class="shell">
+      <div class="sec-head reveal">
+        <h2>Three routes, and what lands on your desk.</h2>
+      </div>
+      <div class="routes-bento reveal">
+        <div class="rtile big">
+          <div class="rt-top"><h3>Handle</h3><span class="badge handle"><span class="dot"></span><span data-stat="handle">13</span> / <span data-stat="total">29</span></span></div>
+          <p>The full job, done. Handling is the anchor; ground transport, hotel and catering attach to it under one reference. A reference is minted from the ledger or reused from the thread.</p>
+          <div class="produces">
+            <div class="pr"><span class="mono">artifact</span><span>Operation opened with a per-line service status</span></div>
+            <div class="pr"><span class="mono">drafts</span><span>Every provider request written, CC routed by matrix</span></div>
+            <div class="pr"><span class="mono">reply</span><span>Client acknowledgment staged for a human to release</span></div>
+          </div>
+          <div class="ex">e.g. Adriatic Wings ex LEMD: 4 provider emails + 1 client ack under PN2606032</div>
+        </div>
+        <div class="rtile">
+          <div class="rt-top"><h3>Escalate</h3><span class="badge escalate"><span class="dot"></span><span data-stat="escalate">14</span> / <span data-stat="total">29</span></span></div>
+          <p>Cancel a booked service, an unknown or spoofed operator, a credit hold, a permit or fuel ask, a hidden instruction, a service with no trip to attach it to. It stops and briefs.</p>
+          <div class="ex"><span data-stat="reasons">10</span> distinct reason codes, each routed to its own queue</div>
+        </div>
+        <div class="rtile">
+          <div class="rt-top"><h3>Drop</h3><span class="badge drop"><span class="dot"></span><span data-stat="drop">2</span> / <span data-stat="total">29</span></span></div>
+          <p>Marketing, automated bounces, internal chatter, billing questions. Recognised at the scope filter and logged out.</p>
+          <div class="ex">Filtered before any lookup or draft</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- trust boundary -->
+  <section class="band trust" id="trust" style="padding-top:0">
+    <div class="shell">
+      <div class="sec-head reveal">
+        <h2>Email is data. Never instructions.</h2>
+        <p>The desk reads untrusted email, holds the operator ledger, and stages outbound mail. That is the whole attack surface, so each leg is cut by a rule in the folder, not by hoping the model behaves. An email can ask for a trip. It can never reconfigure the desk.</p>
+      </div>
+      <div class="layers reveal">
+        <div class="ly">
+          <div class="lyk">Layer 1</div>
+          <div class="lyt"><b>Sender authentication.</b> A registry match is not proof, because <span class="mono">From:</span> is trivially forged. On any spoof signal (an SPF, DKIM or DMARC failure, a reply-to pointing off the operator's domain), the sender is not trusted.</div>
+          <div class="lyr"><span class="badge escalate"><span class="dot"></span>UNVERIFIED_SENDER</span></div>
+        </div>
+        <div class="ly">
+          <div class="lyk">Layer 2</div>
+          <div class="lyt"><b>Injection tripwire.</b> Content that tries to steer the desk itself (override language, edits to the ledger or registry, a redirect of outbound, a payload hidden in a quoted thread) is treated as an attack, not a request. The payload is quoted verbatim in the brief.</div>
+          <div class="lyr"><span class="badge escalate"><span class="dot"></span>SUSPECTED_INJECTION</span></div>
+        </div>
+        <div class="ly">
+          <div class="lyk">Layer 3</div>
+          <div class="lyt"><b>Exfiltration lock and approval gate.</b> Recipients resolve only from the provider database and config; an address found in an email body is recorded, never used as a destination. And nothing is ever sent: every drafted batch waits at a human approval gate in the console.</div>
+          <div class="lyr"><span class="badge handle"><span class="dot"></span>Human releases</span></div>
+        </div>
+      </div>
+      <p class="trust-foot reveal"><span data-stat="adversarial">5</span> of the <span data-stat="total">29</span> cases are adversarial: spoofed and lookalike senders, hidden instructions, redirected recipients, and asks to rewrite the desk's own records. The desk escalates every one and drafts nothing. <a href="console.html">Open the console</a> to step through them.</p>
+    </div>
+  </section>
+
+  <!-- eval -->
+  <section class="band eval" id="eval" style="padding-top:0">
+    <div class="shell">
+      <div class="sec-head reveal" style="margin-bottom:34px">
+        <p class="eyebrow">How we know it works</p>
+        <h2>Every decision is pinned to a golden answer.</h2>
+        <p>A regression harness replays all <span data-stat="total">29</span> sample emails, including the adversarial ones that spoof a sender or smuggle an instruction, and checks the machine header and the full card against the expected output. Nothing ships until the set is green.</p>
+      </div>
+      <div class="eval-grid reveal">
+        <div class="eval-checks" id="eval-layers"></div>
+        <div class="terminal" id="eval-terminal"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- cta -->
+  <section class="ctaband">
+    <div class="shell">
+      <div class="box reveal">
+        <div>
+          <h2>This is a running desk, not a slide.</h2>
+          <p>Open the console to watch all <span data-stat="total">29</span> inbound emails move through the spine, inspect each decision tree, and read every email the pipeline wrote.</p>
+        </div>
+        <a class="btn btn-primary" href="console.html">Open the console <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="shell">
+      <div class="l">Built with the Clift <b>Interpretable Context Methodology</b>. Folders as architecture, each file one job.</div>
+      <div class="meta">Fictional demo data. Real ICAO reference codes. Competition project.</div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="assets/landing.js" defer></script>
+</body>
+</html>

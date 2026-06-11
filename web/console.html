@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ground Control - operations console</title>
+  <meta name="description" content="Watch all 27 inbound emails move through the decision spine: the email received, the decision tree it ran, the operation opened, every staged email, and the human approval gate that releases it." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="console-page">
+  <div class="cwrap">
+    <!-- top ribbon -->
+    <div class="cbar">
+      <a class="brand" href="index.html" title="Back to the landing page">
+        <span class="mk" aria-hidden="true"></span>
+        <span class="nm">Ground Control</span>
+      </a>
+      <div class="seg" role="tablist">
+        <button id="tab-pipeline" class="on" role="tab">Pipeline</button>
+        <button id="tab-status" role="tab">Status board</button>
+      </div>
+      <div class="ribbon" id="ribbon"></div>
+    </div>
+
+    <!-- pipeline view -->
+    <div class="pipe" id="view-pipeline">
+      <!-- inbox -->
+      <div class="pane inbox">
+        <div class="pane-h">
+          <span class="t">Inbox</span>
+          <span class="ct" id="inbox-count"></span>
+        </div>
+        <div class="filters" id="filters">
+          <button class="on" data-f="ALL">All</button>
+          <button data-f="HANDLE">Handle</button>
+          <button data-f="ESCALATE">Escalate</button>
+          <button data-f="DROP">Drop</button>
+        </div>
+        <div id="inbox-list"></div>
+      </div>
+
+      <!-- center: pipeline + decision tree + operation -->
+      <div class="pane center" id="center"></div>
+
+      <!-- outbox: generated emails -->
+      <div class="pane outbox" id="outbox"></div>
+    </div>
+
+    <!-- status view -->
+    <div class="board" id="view-status" hidden></div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="assets/console.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+runs/
+.DS_Store
+docs/superpowers/
+docs/Objetive.md

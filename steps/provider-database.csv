@@ -1,0 +1,21 @@
+icao,service_category,provider_name,provider_email,payment_type,inbound_only,is_designated,notes
+SUMU,handling,Plata Handling Services,ops@platahandling.example,CREDIT,no,yes,Designated handler for Montevideo
+SUMU,ground_transport,Costa Chauffeur,reservations@costachauffeur.example,CREDIT_CARD,no,no,Credit card must be attached to request
+SUMU,catering,Plata Handling Services,ops@platahandling.example,CREDIT,no,yes,Catering routed through the local handler
+KMIA,handling,Anchor Aviation Services,dispatch@anchoraviation.example,CREDIT,no,yes,US station; CC accounting@ if operator pays via Aircard
+KMIA,ground_transport,Drivex Chauffeur,noreply@drivex.example,PREPAID,yes,no,INBOUND-ONLY: read their booking confirmations; never send a request
+KMIA,catering,Skyline Catering,orders@skylinecatering.example,CREDIT_CARD,no,no,Credit card must be attached
+KTEB,handling,Summit Jet Center,ops@summitjetcenter.example,CREDIT,no,yes,
+KTEB,ground_transport,Drivex Chauffeur,noreply@drivex.example,PREPAID,yes,no,INBOUND-ONLY
+LEMD,handling,Iberus Ramp Partners,handling@iberusramp.example,CREDIT,no,yes,
+LEMD,ground_transport,Velvet Drive Madrid,madrid@velvetdrive.example,CREDIT_CARD,no,no,Credit card must be attached
+LEMD,catering,Air Gourmet Iberia,madrid@airgourmet.example,CREDIT,no,no,
+LFPB,handling,Le Bourget Executive Handling,ops@lbehandling.example,CREDIT,no,yes,
+LFPB,ground_transport,Velvet Drive Paris,paris@velvetdrive.example,CREDIT_CARD,no,no,Credit card must be attached
+LFPB,catering,Air Gourmet Paris,paris@airgourmet.example,CREDIT,no,no,
+EGGW,handling,Albion Ground Services,ops@albionground.example,CREDIT,no,yes,
+EGGW,ground_transport,Crown Chauffeur London,bookings@crownchauffeur.example,CREDIT_CARD,no,no,Credit card must be attached
+SCEL,handling,Andes Ramp Services,ops@andesramp.example,CREDIT,no,yes,
+SCEL,ground_transport,Cordillera Cars,reservas@cordilleracars.example,CREDIT_CARD,no,no,Credit card must be attached
+SCEL,catering,Andes Gourmet,catering@andesgourmet.example,CREDIT,no,no,
+SBGR,handling,Tropic Wings Handling,ops@tropicwings.example,CREDIT,no,yes,
