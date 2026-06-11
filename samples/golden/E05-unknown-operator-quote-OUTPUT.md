@@ -1,7 +1,7 @@
 # Edge Output E05 — Unrecognized off-registry sender, first-time quote (ESCALATE)
 
 > ⚠️ Fictional. Golden for `samples/inbound/E05-unknown-operator-quote.md`. Trust before content: an
-> off-registry sender with **no impersonation signal** escalates at Step 1 (identify) — **content-blind**,
+> off-registry sender with **no impersonation signal** escalates at Step 0 (identify) — **content-blind**,
 > before intent or services are ever analysed. A stranger is a potential client, not noise: sales
 > onboards and credit-checks before any provider is contacted.
 

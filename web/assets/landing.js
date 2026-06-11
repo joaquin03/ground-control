@@ -79,11 +79,11 @@
     if (!host || !GC.spine_def) return;
     var branch = {
       S0: "→ <b>DROP</b> noise / billing &nbsp;·&nbsp; FYI",
-      S1: "→ <b>ESCALATE</b> cancel booked work",
-      S2: "→ <b>ESCALATE</b> unknown / spoofed sender / military / diplomatic / credit hold",
+      S1: "→ <b>ESCALATE</b> unknown / spoofed sender / military / diplomatic / credit hold",
+      S2: "→ <b>ESCALATE</b> cancel booked work",
       S3: "→ <b>ESCALATE</b> incomplete skeleton",
       S4: "→ <b>ESCALATE</b> permit / fuel / flight-plan / no anchor",
-      S5: "provider, or FLAGGED for a human",
+      S5: "search the provider DB by station → provider, or FLAGGED for a human",
       S6: "→ <b>ESCALATE</b> low confidence",
       S7: "CC by matrix · recipients locked · staged for approval",
       S8: "→ <b>HANDLE</b> operation opened",

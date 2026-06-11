@@ -5,7 +5,7 @@ acting*, not asking.
 
 ## Example 1 — HANDLE (full service) · `samples/inbound/02-adriaticwings-departure-full.md`
 Adriatic Wings (T2, credit OK) asks for handling + hotel + transport + catering ex LEMD.
-- **Step 0–2:** operational (scope), known operator + credit OK (identify, Step 1), NEW (intent, Step 2) → proceed.
+- **Step 0–2:** known operator + credit OK (identify, Step 0 — sender validated before the body is read), operational (scope, Step 1), NEW (intent, Step 2) → proceed.
 - **Step 3–6:** skeleton complete; 4 in-scope services; handling/ground/catering resolve to LEMD
   providers; hotel is operator-named (Variant A) → no DB lookup; ground is CREDIT_CARD → CC procurement.
 - **Step 7–8:** drafts 4 outbound + client ack; hotel reservations email unknown → service **TBC**.

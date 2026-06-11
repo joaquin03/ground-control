@@ -45,7 +45,7 @@ python3 web/build_data.py      # writes web/data.js + web/data.json
 `build_data.py` parses, per case: the inbound email, the golden decision card (machine
 header, drafts, trip record, flags), reconstructs the spine path (which gate fired) from
 the decision and reason codes, and joins each case to its `state/activity-log.md` entry so
-the decision tree can show **what each gate actually read** (`S1 -> ADW (T2, Part 135,
+the decision tree can show **what each gate actually read** (`S0 -> ADW (T2, Part 135,
 credit OK)`). It also reads `state/results.csv` and `state/pn-ledger.json` for the status
 board, and **runs `eval/run_eval.py` live** to capture the real pass result for the landing
 page. It only reads the repo files; it never writes to `state/`.

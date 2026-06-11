@@ -40,13 +40,13 @@ Lets you validate the operator followed the spine. One entry per inbound, newest
 ```
 ## <DDMMMYYYY> · <REF|—> · <registry|—> · <operator|UNKNOWN>
 inbound: "<subject>"
-spine:  S0 <scope> · S1 <operator/credit> · S2 <intent> · S3 <skeleton>
+spine:  S0 <operator/credit> · S1 <scope> · S2 <intent> · S3 <skeleton>
         S4 <services> · S5 <providers> · S6 <validate> · S7 <drafts> · S8 <decision>
 actions: <N>  (→ results.csv rows for <REF>)
 flags:  <flags, or none>
 ```
 
-For ESCALATE/DROP the trail stops at the gate that fired (e.g. `S1 operator: MILITARY → ESCALATE`)
+For ESCALATE/DROP the trail stops at the gate that fired (e.g. `S0 operator: MILITARY → ESCALATE`)
 and `actions: 0`.
 
 ## How Ground Control emits them (Step 8)

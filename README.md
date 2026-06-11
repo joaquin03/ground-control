@@ -28,8 +28,8 @@ real operation — the logic is real.
 
 ## The decision spine
 Every inbound runs these nine gates in order — the first to fire a route wins (`rules.md`).
-- **S0 · Scope filter** — operational, or noise / billing / provider-FYI?
-- **S1 · Identify operator** — trust before content: known, authenticated, in good standing? Unknown escalates here (→ sales, content-blind).
+- **S0 · Identify the sender** — trust before content: known, authenticated, in good standing — before a word of the body is read? Unknown escalates here (→ sales, content-blind); machine mail (bulk/bounce/OOO) drops.
+- **S1 · Scope filter** — operational, or billing / provider-FYI?
 - **S2 · Intent** — NEW · AMENDMENT · FYI. Cancel routes out.
 - **S3 · Flight skeleton** — registry, ICAO, times, POB complete?
 - **S4 · Detect services** — in-scope only; handling is the anchor.

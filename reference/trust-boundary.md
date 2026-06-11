@@ -17,14 +17,15 @@ alone cannot make that safe — the model is not a security boundary. So each le
 | Sender identity is forged | Layer 1 — sender authentication before the registry match |
 | Outbound goes where the email says | Layer 3 — exfiltration lock + human approval gate |
 
-## Layer 1 — Sender authentication (Step 1, before the registry match counts)
+## Layer 1 — Sender authentication (Step 0 — the first gate, before anything else)
 
-The registry match makes the desk **known-sender-only by construction** — and the spine runs that gate
-before any content analysis (only the Step-0 noise filter precedes it), so untrusted senders are
-disposed of **before** their content is read. A `From:` domain not in `steps/operator-registry.csv`
-is **escalated content-blind** (`UNKNOWN_OPERATOR` → sales) — never read for intent or services.
-But `From:` is trivially forged, and an attacker wearing a known name is **not** a mere stranger.
-Check spoof/impersonation signals:
+The registry match makes the desk **known-sender-only by construction** — and the spine makes that
+gate the **first thing the desk does**: the sender is validated before a word of the body is read
+(the gate reads only the envelope — `From:`, `Reply-To:`, auth headers, bulk markers). A `From:`
+domain not in `steps/operator-registry.csv` is **escalated content-blind** (`UNKNOWN_OPERATOR` →
+sales) — never read for intent or services; machine mail (bulk/bounce/OOO markers) is dropped as
+noise with no sender to validate. But `From:` is trivially forged, and an attacker wearing a known
+name is **not** a mere stranger. Check spoof/impersonation signals:
 
 - `Authentication-Results:` header reports `spf=fail`, `dkim=fail`, or `dmarc=fail`.
 - `Reply-To:` (or a "send all replies/quotes to …" line) points **off** the registry domain.

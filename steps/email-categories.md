@@ -2,8 +2,9 @@
 
 > ⚠️ Demo data. Fictional contacts.
 
-Reference the operator uses to classify an inbound before doing anything else. Two questions,
-in order.
+Reference the operator uses to classify an inbound **after the sender is validated** (Step 0,
+`rules.md` — machine mail with bulk/bounce/OOO headers is already dropped there). Two questions,
+in order; the noise classes below catch what slips past the header markers.
 
 ## Question 1 — Is this an operational email at all?
 

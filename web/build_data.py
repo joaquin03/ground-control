@@ -31,8 +31,8 @@ EMAIL = re.compile(r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]+")
 
 # The 8-step spine (rules.md). Title + one-line job, for the decision-tree view.
 SPINE = [
-    ("S0", "Scope filter", "Operational, or noise / billing / provider-FYI?"),
-    ("S1", "Identify operator", "Trust before content: authenticated, known, in good standing? Unknown escalates here."),
+    ("S0", "Identify the sender", "Trust before content: authenticated, known, in good standing — before a word of the body is read? Unknown escalates; machine mail drops."),
+    ("S1", "Scope filter", "Operational, or billing / provider-FYI?"),
     ("S2", "Intent", "NEW, AMENDMENT, or FYI. Cancel routes out."),
     ("S3", "Flight skeleton", "Registry, ICAO, times, POB complete?"),
     ("S4", "Detect services", "In-scope only. Handling is the anchor."),
@@ -43,16 +43,16 @@ SPINE = [
 ]
 
 # reason code -> the gate (step index) it fires at. Earliest gate wins.
-# v1.1 order: S0 scope, S1 identify, S2 intent, S3 skeleton, ...
+# v2 order (sender-first): S0 identify sender, S1 scope, S2 intent, S3 skeleton, ...
 REASON_GATE = {
-    # S1 — identify (trust before content): envelope-level trust gates
-    "UNKNOWN_OPERATOR": 1,        # off-registry stranger -> ESCALATE to sales at identify (content-blind)
-    "IMPERSONATION": 1,           # off-registry impersonating a registry operator -> ESCALATE
-    "MILITARY_OPERATOR": 1,
-    "DIPLOMATIC_OPERATOR": 1,
-    "NO_CREDIT": 1,
-    "UNVERIFIED_AUTHORITY": 1,
-    "UNVERIFIED_SENDER": 1,
+    # S0 — identify the sender (trust before content): envelope-level trust gates, first thing run
+    "UNKNOWN_OPERATOR": 0,        # off-registry stranger -> ESCALATE to sales at identify (content-blind)
+    "IMPERSONATION": 0,           # off-registry impersonating a registry operator -> ESCALATE
+    "MILITARY_OPERATOR": 0,
+    "DIPLOMATIC_OPERATOR": 0,
+    "NO_CREDIT": 0,
+    "UNVERIFIED_AUTHORITY": 0,
+    "UNVERIFIED_SENDER": 0,
     # S2 — intent (content): cancel + body-level injection surface here
     "CANCELLATION": 2,
     "SUSPECTED_INJECTION": 2,     # always-on; surfaces when content is read (after identity passes)
@@ -261,16 +261,22 @@ def parse_golden(path):
     }
 
 
-def build_spine(decision, intent, reason):
+def build_spine(decision, intent, reason, why=""):
     reasons = [r.strip() for r in re.split(r"[,\s]+", reason or "") if r.strip() and r != "-"]
     gate = None
     if decision == "ESCALATE":
         gates = [REASON_GATE[r] for r in reasons if r in REASON_GATE]
         gate = min(gates) if gates else 2
     elif decision == "DROP":
-        # noise / billing drops at S0 (scope)
+        # machine/bulk mail drops at S0 (sender gate, header markers); billing/internal at S1 (scope)
         dgates = [REASON_GATE[r] for r in reasons if r in REASON_GATE]
-        gate = min(dgates) if dgates else 0
+        if dgates:
+            gate = min(dgates)
+        elif re.search(r"newsletter|marketing|bounce|out.of.office|read receipt|bulk|noise",
+                       (why or "") + " " + (reason or ""), re.I):
+            gate = 0
+        else:
+            gate = 1
     out = []
     for i, (sid, title, job) in enumerate(SPINE):
         state = "pass"
@@ -295,8 +301,8 @@ def build_spine(decision, intent, reason):
     if intent == "FYI":
         for s in out:
             s["state"] = "skip"
-        out[0]["state"] = "pass"   # S0 operational
-        out[1]["state"] = "pass"   # S1 identify (sender = provider on a live thread)
+        out[0]["state"] = "pass"   # S0 identify (sender = provider on a live thread)
+        out[1]["state"] = "pass"   # S1 scope: operational, provider confirmation
         out[2]["state"] = "pass"   # S2 intent = FYI, reuse thread REF
         out[8]["state"] = "pass"   # S8 service -> CONFIRMED, no outbound
     return out, gate, reasons
@@ -424,7 +430,7 @@ def main():
         decision = h.get("decision", "?")
         intent = h.get("intent", "-")
         reason = h.get("reason", "-")
-        spine, gate, reasons = build_spine(decision, intent, reason)
+        spine, gate, reasons = build_spine(decision, intent, reason, read(gp) if decision == "DROP" else "")
 
         # operator: trip-record line first, enriched by registry
         op = {"name": "UNKNOWN", "code": "", "tier": "", "type_of_flight": "", "credit": ""}

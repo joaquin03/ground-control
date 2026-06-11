@@ -345,7 +345,8 @@ section.band { padding: 96px 0; }
   .trust .lyr { justify-self: start; }
 }
 
-/* method: editorial split (headline left, one-rule card right) */
+/* method: editorial lead + numbered points */
+.method .method-body { max-width: 820px; }
 .method .grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 54px; align-items: start; }
 .method .lead { font-size: clamp(22px, 2.6vw, 30px); line-height: 1.32; font-family: var(--font-display); font-weight: 500; letter-spacing: -.01em; }
 .method .lead .hl { color: var(--gold); }
