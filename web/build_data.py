@@ -32,7 +32,7 @@ EMAIL = re.compile(r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]+")
 # The 8-step spine (rules.md). Title + one-line job, for the decision-tree view.
 SPINE = [
     ("S0", "Scope filter", "Operational, or noise / billing / provider-FYI?"),
-    ("S1", "Identify operator", "Trust before content: authenticated, known, in good standing? Unknown drops here."),
+    ("S1", "Identify operator", "Trust before content: authenticated, known, in good standing? Unknown escalates here."),
     ("S2", "Intent", "NEW, AMENDMENT, or FYI. Cancel routes out."),
     ("S3", "Flight skeleton", "Registry, ICAO, times, POB complete?"),
     ("S4", "Detect services", "In-scope only. Handling is the anchor."),
@@ -46,7 +46,7 @@ SPINE = [
 # v1.1 order: S0 scope, S1 identify, S2 intent, S3 skeleton, ...
 REASON_GATE = {
     # S1 — identify (trust before content): envelope-level trust gates
-    "UNKNOWN_OPERATOR": 1,        # off-registry stranger -> DROP at identify
+    "UNKNOWN_OPERATOR": 1,        # off-registry stranger -> ESCALATE to sales at identify (content-blind)
     "IMPERSONATION": 1,           # off-registry impersonating a registry operator -> ESCALATE
     "MILITARY_OPERATOR": 1,
     "DIPLOMATIC_OPERATOR": 1,
@@ -268,7 +268,7 @@ def build_spine(decision, intent, reason):
         gates = [REASON_GATE[r] for r in reasons if r in REASON_GATE]
         gate = min(gates) if gates else 2
     elif decision == "DROP":
-        # noise drops at S0 (scope); an unrecognized off-registry sender drops at S1 (identify)
+        # noise / billing drops at S0 (scope)
         dgates = [REASON_GATE[r] for r in reasons if r in REASON_GATE]
         gate = min(dgates) if dgates else 0
     out = []
@@ -320,7 +320,7 @@ def derive_from_spine(spine):
         dec = "ESCALATE"
     else:
         dec = "HANDLE"
-    im = re.search(r"S1\s+(NEW|AMENDMENT|FYI)", spine)
+    im = re.search(r"S2\s+(NEW|AMENDMENT|FYI)", spine)
     intent = im.group(1) if im else ("FYI" if "FYI" in spine else "-")
     head = spine.split("S5")[0] if "S5" in spine else spine
     svc = set(re.findall(r"handling|ground_transport|catering|hotel", head))

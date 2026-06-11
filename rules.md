@@ -17,12 +17,13 @@ Read `steps/email-categories.md` (Question 1). Newsletter / bounce / OOO / inter
 booking confirmation on a live trip → **FYI** (note it; the named service → CONFIRMED; no outbound).
 
 ## Step 1 — Identify the operator (trust before content)
-Establish trust **before** any content analysis — an email we can't place is dropped here, never read
-for intent or services (v1: minimize analysis of senders we don't transact with). Match the `From:`
+Establish trust **before** any content analysis — an email we can't place is escalated here, never read
+for intent or services (the desk transacts only with onboarded operators). Match the `From:`
 domain in `steps/operator-registry.csv`:
-- **Off-registry, no impersonation signal → DROP** `UNKNOWN_OPERATOR` (op-status DROPPED; body note
-  "→ sales: unrecognized sender"). An un-onboarded stranger is logged and dropped, not analysed.
-  Recoverable from the drop log for sales; v2 may route to onboarding.
+- **Off-registry, no impersonation signal → ESCALATE** `UNKNOWN_OPERATOR` (sales). An un-onboarded
+  stranger is a potential client, not noise — route to sales for onboarding + credit check, with the
+  email quoted in the briefing. **Content-blind**: no intent, service, or pricing analysis; no provider
+  contacted; nothing handled on an unverified first email.
 - **Off-registry but impersonating a registry operator** (display name claims a registry operator, or a
   lookalike of a registry domain) → **ESCALATE** `IMPERSONATION` (ops_desk). An attack signal, not a
   stranger — never drop it; release nothing.

@@ -19,11 +19,12 @@ alone cannot make that safe — the model is not a security boundary. So each le
 
 ## Layer 1 — Sender authentication (Step 1, before the registry match counts)
 
-The registry match makes the desk **known-sender-only by construction** — and v1 makes that gate
-the *first* thing the desk does, so untrusted senders are disposed of **before** their content is
-analysed. A `From:` domain not in `steps/operator-registry.csv` is **dropped** (`UNKNOWN_OPERATOR`,
-logged for sales triage) — not escalated, not read for intent. But `From:` is trivially forged, and an
-attacker wearing a known name is **not** a stranger to drop. Check spoof/impersonation signals:
+The registry match makes the desk **known-sender-only by construction** — and the spine runs that gate
+before any content analysis (only the Step-0 noise filter precedes it), so untrusted senders are
+disposed of **before** their content is read. A `From:` domain not in `steps/operator-registry.csv`
+is **escalated content-blind** (`UNKNOWN_OPERATOR` → sales) — never read for intent or services.
+But `From:` is trivially forged, and an attacker wearing a known name is **not** a mere stranger.
+Check spoof/impersonation signals:
 
 - `Authentication-Results:` header reports `spf=fail`, `dkim=fail`, or `dmarc=fail`.
 - `Reply-To:` (or a "send all replies/quotes to …" line) points **off** the registry domain.
@@ -34,8 +35,10 @@ attacker wearing a known name is **not** a stranger to drop. Check spoof/imperso
   until the sender authenticates. There is an account to protect.
 - **Off-registry domain impersonating a registry operator → ESCALATE `IMPERSONATION`** (ops_desk) — a
   targeted attack, never dropped silently, releases nothing.
-- **Off-registry domain, no impersonation signal → DROP** (`UNKNOWN_OPERATOR`) — a stranger we don't
-  transact with; logged for sales, no analysis spent. Dropping the noise is cheap; never drop a signal.
+- **Off-registry domain, no impersonation signal → ESCALATE `UNKNOWN_OPERATOR`** (sales) — a stranger
+  we don't transact with, but possibly a client we want. Routed **content-blind**: the email is quoted
+  in the briefing, never analysed for intent or services, and nothing is handled on an unverified
+  first email. No analysis spent on untrusted content; no prospect silently lost.
 
 ## Layer 2 — Injection tripwire (always on, any step)
 

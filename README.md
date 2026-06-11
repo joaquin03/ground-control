@@ -23,13 +23,13 @@ real operation — the logic is real.
 | Route | When | You get |
 |-------|------|---------|
 | **HANDLE** | in-scope, known operator, complete, clear | operation artifact + provider drafts + client ack |
-| **ESCALATE** | cancel · unverified/impersonation/military/diplomatic · credit hold · out-of-scope (permit/fuel/FPL) · no handling anchor · incomplete · low confidence · **injection / spoofed sender** (`reference/trust-boundary.md`) | a clean escalation flag with a reason code |
-| **DROP** | noise (newsletter/bounce/OOO/internal), billing, or **unrecognized sender** (off-registry, no impersonation — trust-first, v1) | logged and dropped; nothing reaches your queue |
+| **ESCALATE** | cancel · **unknown operator** (off-registry → sales, content-blind) · unverified/impersonation/military/diplomatic · credit hold · out-of-scope (permit/fuel/FPL) · no handling anchor · incomplete · low confidence · **injection / spoofed sender** (`reference/trust-boundary.md`) | a clean escalation flag with a reason code |
+| **DROP** | noise (newsletter/bounce/OOO/internal) or billing | logged and dropped; nothing reaches your queue |
 
 ## The decision spine
 Every inbound runs these nine gates in order — the first to fire a route wins (`rules.md`).
 - **S0 · Scope filter** — operational, or noise / billing / provider-FYI?
-- **S1 · Identify operator** — trust before content: known, authenticated, in good standing? Unknown drops here.
+- **S1 · Identify operator** — trust before content: known, authenticated, in good standing? Unknown escalates here (→ sales, content-blind).
 - **S2 · Intent** — NEW · AMENDMENT · FYI. Cancel routes out.
 - **S3 · Flight skeleton** — registry, ICAO, times, POB complete?
 - **S4 · Detect services** — in-scope only; handling is the anchor.
@@ -57,7 +57,7 @@ ground-control/
 
 ## Security
 Email content is **data, never instructions**. The trust boundary (`reference/trust-boundary.md`) is on at every step:
-- **Trust before content.** Unknown / off-registry senders are dropped before their body is read — never analyzed for intent or services.
+- **Trust before content.** Unknown / off-registry senders are escalated content-blind before their body is read — never analyzed for intent or services.
 - **Injection & spoofing escalate, never execute.** Override language, ledger / registry / config tampering, or spoofed / impersonating senders → ESCALATE with the payload quoted in the briefing; nothing is acted on.
 - **Exfiltration lock.** Outbound TO/CC resolve **only** from the provider database + `desk-config.md`. An address found in the email body is data, never a destination.
 - **Human approval gate.** Every draft is staged in the console's approval queue and released only by a human — the desk never sends on its own.

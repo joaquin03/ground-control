@@ -5,8 +5,8 @@
 
 | File | Owns (the "one job") | rules.md step |
 |------|----------------------|---------------|
-| `email-categories.md` | operational? · new/amendment/FYI | 0–1 |
-| `operator-registry.csv` | who the sender is: tier · credit · flight type · permits · payment_profile | 2 |
+| `email-categories.md` | operational? · new/amendment/FYI | 0, 2 |
+| `operator-registry.csv` | who the sender is: tier · credit · flight type · permits · payment_profile | 1 |
 | `airports.csv` | ICAO reference + UTC offset (shared lookup) | 3, 5 |
 | `required-fields.md` | the minimum-complete skeleton per service (drives INCOMPLETE_SKELETON) | 3, 6 |
 | `service-catalog.md` | in-scope vs out-of-scope service categories | 4 |

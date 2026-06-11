@@ -1,6 +1,6 @@
 > 📦 **Archived design note.** This described the original `Dataset/` layout. The operator now lives one
 > level up: data → `../steps/`, templates → `../templates/`, samples → `../samples/`. See `../CLAUDE.md`.
-> Last updated: 10 JUN 2026 — corpus counts refreshed (27 cases: 14 core + E01–E10 + S01–S03).
+> Last updated: 11 JUN 2026 — corpus counts refreshed (29 cases: 14 core + E01–E10 + S01–S05).
 
 # Dataset Index — Apex Trip Support (demo)
 
@@ -43,7 +43,7 @@ ground-control/
 │   ├── client-acknowledgment.md  ← two variants (new vs amendment)
 │   └── escalation-flag.md        ← internal hand-off when NOT auto-handling
 │
-├── samples/inbound/              ← 27 fictional incoming emails (14 core + 10 edge + 3 adversarial)
+├── samples/inbound/              ← 29 fictional incoming emails (14 core + 10 edge + 5 adversarial)
 │   ├── 01-falconcrest-arrival-handling.md      (HANDLE — handling + transport)
 │   ├── 02-adriaticwings-departure-full.md      (HANDLE — 4 services)
 │   ├── 03-eta-amendment.md                      (HANDLE — amendment, live thread)
@@ -62,10 +62,11 @@ ground-control/
 │   │                             E04 billing (not ops) · E05 unknown operator · E06 provider FYI ·
 │   │                             E07 credit hold · E08 diplomatic · E09 broker on-behalf ·
 │   │                             E10 hotel-only, no handling anchor
-│   └── S01..S03-*.md             adversarial (trust boundary): S01 hidden instruction ·
-│                                 S02 recipient swap · S03 spoofed sender
+│   └── S01..S05-*.md             adversarial (trust boundary): S01 hidden instruction ·
+│                                 S02 recipient swap · S03 spoofed sender ·
+│                                 S04 external impersonation · S05 records tamper
 │
-└── samples/golden/               ← golden output for each inbound (01..14 + E01..E10 + S01..S03 -OUTPUT.md)
+└── samples/golden/               ← golden output for each inbound (01..14 + E01..E10 + S01..S05 -OUTPUT.md)
 ```
 
 ## Data dictionary

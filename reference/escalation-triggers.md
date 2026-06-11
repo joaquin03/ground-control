@@ -11,6 +11,7 @@
 | `MILITARY_OPERATOR` | `operator-registry.csv` type_of_flight = Military | ops_desk |
 | `DIPLOMATIC_OPERATOR` | type_of_flight = Diplomatic/State | ops_desk |
 | `NO_CREDIT` | credit_status = HOLD | finance (cc ops_desk) |
+| `UNKNOWN_OPERATOR` | off-registry sender, no impersonation signal — a stranger we don't transact with, possibly a client we want. Escalated **content-blind** (never analysed for intent or services) for onboarding + credit check | sales |
 | `IMPERSONATION` | off-registry sender impersonating a registry operator: display name claims a registry operator, or a lookalike domain (`reference/trust-boundary.md`). An attack signal, not a stranger | ops_desk |
 | `UNVERIFIED_AUTHORITY` | third party "on behalf of" a known operator, authority not confirmed | ops_desk |
 | `UNVERIFIED_SENDER` | registry domain with a spoof signal: auth-fail header, off-registry `Reply-To`, name/domain mismatch (`reference/trust-boundary.md`) | ops_desk |
@@ -29,7 +30,8 @@
 
 ## Not an escalation
 - **DROP** (noise / not-operations): newsletters, bounces, OOO, internal/billing → `email-categories.md`.
-- **DROP** (unrecognized sender, v1): an **off-registry domain with no impersonation signal** is dropped
-  at Step 1 (`UNKNOWN_OPERATOR`, logged → sales), never analysed for intent or services. Off-registry
-  *impersonation* is the exception — that escalates (`IMPERSONATION`). Drop the stranger, flag the attack.
 - **FYI**: a provider's inbound confirmation on a live trip → note it, no outbound (service → CONFIRMED).
+
+> Note on strangers: an **off-registry sender** is never dropped — it escalates `UNKNOWN_OPERATOR` to
+> sales, **content-blind** (the email is quoted in the briefing, never analysed for intent or services).
+> Off-registry *impersonation* is the attack variant — that escalates `IMPERSONATION` to ops_desk.

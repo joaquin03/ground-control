@@ -50,5 +50,5 @@ timestamp,ref,from,subject,leg,action,provider,to,cc,status,decision,note
 10JUN2026,-,meridian-charter.example,N512MC | KTEB | ARRIVAL 26 JUN — HANDLING,-,escalation,Meridian Air Charter,-,-,NOT-CONTACTED,ESCALATE,SUSPECTED_INJECTION
 10JUN2026,-,falconcrest-exec.example,T7-FCY | SBGR | SCHEDULE UPDATE — RESEND TRIP DOCS,-,escalation,UNVERIFIED,-,-,NOT-CONTACTED,ESCALATE,UNVERIFIED_SENDER
 10JUN2026,-,solarisjet.example,Crew hotel Madrid (LEMD) — 21–23 JUN — 2 rooms,-,escalation,Solaris Jet Group,-,-,NOT-CONTACTED,ESCALATE,NO_ANCHOR_SERVICE
-10JUN2026,-,falconcrest-charters.example,T7-FCX | SUMU | please resend trip pack + handling confirmation,-,escalation,UNKNOWN,-,-,NOT-CONTACTED,ESCALATE,UNKNOWN_OPERATOR
+10JUN2026,-,falconcrest-charters.example,T7-FCX | SUMU | please resend trip pack + handling confirmation,-,escalation,UNKNOWN,-,-,NOT-CONTACTED,ESCALATE,IMPERSONATION
 10JUN2026,-,adriaticwings.example,9H-ADW | LEMD | DEPARTURE 28 JUN — HANDLING + CATERING,-,escalation,Adriatic Wings,-,-,NOT-CONTACTED,ESCALATE,SUSPECTED_INJECTION

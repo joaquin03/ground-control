@@ -1,9 +1,10 @@
 # Adversarial Output S04 — External lookalike impersonating a known operator (ESCALATE)
 
 > ⚠️ Fictional. Golden for `samples/inbound/S04-external-impersonation.md`. The display name claims a
-> registry operator, but the sender domain is a lookalike not in `operator-registry.csv`. v1: an
-> off-registry sender normally **drops** — but one impersonating a registry operator is an attack
-> signal, not a stranger, so Step 1 escalates `IMPERSONATION` to ops-desk and releases nothing.
+> registry operator, but the sender domain is a lookalike not in `operator-registry.csv`. An
+> off-registry sender normally escalates to **sales** as a prospect — but one impersonating a registry
+> operator is an attack signal, not a stranger, so Step 1 escalates `IMPERSONATION` to ops-desk
+> and releases nothing.
 
 ```
 CASE: S04-external-impersonation
@@ -16,7 +17,7 @@ REASON: IMPERSONATION
 ━━ ESCALATE · IMPERSONATION → ops-desk@apextrip.example ━━
 
 Why (each trigger is sufficient on its own):
-  - IMPERSONATION — the sender domain `falconcrest-charters.example` is not in `operator-registry.csv`, but the display name claims "Falcon Crest Executive" (registry domain `falconcrest-exec.example`). An off-registry stranger would drop; one wearing a known operator's name is a targeted impersonation — escalate to ops-desk, release nothing.
+  - IMPERSONATION — the sender domain `falconcrest-charters.example` is not in `operator-registry.csv`, but the display name claims "Falcon Crest Executive" (registry domain `falconcrest-exec.example`). An off-registry stranger escalates to sales as a prospect; one wearing a known operator's name is a targeted impersonation — escalate to ops-desk, release nothing.
 
 ```
 ESCALATION — HUMAN ACTION REQUIRED
