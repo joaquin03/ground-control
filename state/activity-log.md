@@ -106,7 +106,7 @@ flags:  single additive change; reference preserved
 inbound: "Re: 9H-ADW | LEMD | DEPARTURE 14 JUN — HANDLING + HOTEL + TRANSPORT + CATERING"
 spine:  S0 operational · S1 ADW (T2, Part 135, credit OK) · S2 AMENDMENT: cancel booked work → ESCALATE
 actions: 0
-flags:  only the hotel is affected; do not touch handling, transport, or catering on PN2606031
+flags:  only the hotel is affected; do not touch handling, transport, or catering on PN2606032
 
 ## 09JUN2026 · — · — · UNKNOWN (Adriatic Wings AP)
 inbound: "Query on invoice INV-4471 — SUMU handling charge"

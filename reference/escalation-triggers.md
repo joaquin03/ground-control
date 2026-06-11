@@ -28,6 +28,13 @@
 > present alongside in-scope asks, escalate the **whole** email so the trip stays together (do not
 > partially handle).
 
+## When several triggers fire at once
+List **every** code in `REASON`, but route to **one** queue: the earliest-gate trigger wins —
+operator-identity triggers (unknown / impersonation / unverified / military / diplomatic / credit)
+outrank subprocess and content triggers. The out-ranked codes are named in the briefing so the
+receiving queue can loop in the other desk (e.g. Sample 04: `MILITARY_OPERATOR,OUT_OF_SCOPE_SUBPROCESS`
+→ ops_desk, with the permit ask noted — not a second flag to permits).
+
 ## Not an escalation
 - **DROP** (noise / not-operations): newsletters, bounces, OOO, internal/billing → `email-categories.md`.
 - **FYI**: a provider's inbound confirmation on a live trip → note it, no outbound (service → CONFIRMED).

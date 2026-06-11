@@ -2827,17 +2827,17 @@
         "to": "info@apextrip.example",
         "date": "Wed, 10 Jun 2026 11:40 +0200",
         "subject": "Re: 9H-ADW | LEMD | DEPARTURE 14 JUN — HANDLING + HOTEL + TRANSPORT + CATERING",
-        "body": "Good morning team,\n\nPlease cancel the 4 hotel rooms at Hotel Borealis Madrid on PN2606031 — crew\naccommodation has changed and they no longer need them.\n\nHandling, transport and catering all stand. Thanks for sorting.\n\nBest,\nMarko — ADW Ops"
+        "body": "Good morning team,\n\nPlease cancel the 4 hotel rooms at Hotel Borealis Madrid on PN2606032 — crew\naccommodation has changed and they no longer need them.\n\nHandling, transport and catering all stand. Thanks for sorting.\n\nBest,\nMarko — ADW Ops"
       },
       "banner": "ESCALATE · CANCELLATION → ops-desk@apextrip.example",
       "summary": "",
       "doing": [],
       "flags": [],
       "why": [
-        "CANCELLATION (partial) — the 4 hotel rooms on PN2606031 were a confirmed booking under a corporate card; cancelling may incur a hotel fee and needs a human to action with the property. Adding work auto-handles; cancelling confirmed work does not."
+        "CANCELLATION (partial) — the 4 hotel rooms on PN2606032 were a confirmed booking under a corporate card; cancelling may incur a hotel fee and needs a human to action with the property. Adding work auto-handles; cancelling confirmed work does not."
       ],
       "drafts": [],
-      "escalation_flag": "ESCALATION — HUMAN ACTION REQUIRED\n==================================\nReason code:   CANCELLATION\nWhy I stopped: Operator asked to cancel 4 confirmed hotel rooms. Possible cancellation fee and the property must be contacted by a human.\n\nWhat I read:\n  Operator:    Adriatic Wings (ADW) — T2, credit OK\n  Registry:    9H-ADW\n  Airport:     LEMD\n  Movement:    departure 14 JUN — PN2606031 live\n  Services asked: cancel 4 rooms at Hotel Borealis Madrid (partial — handling/transport/catering stand)\n\nWhat the human needs to decide / supply:\n  - Contact Hotel Borealis Madrid to release the 4 rooms; capture any fee.\n  - Confirm back to the operator. Leave handling / transport / catering untouched.\n\nOriginal email: samples/inbound/E03-remove-service.md\nI cancelled nothing. The hotel has not been contacted.",
+      "escalation_flag": "ESCALATION — HUMAN ACTION REQUIRED\n==================================\nReason code:   CANCELLATION\nWhy I stopped: Operator asked to cancel 4 confirmed hotel rooms. Possible cancellation fee and the property must be contacted by a human.\n\nWhat I read:\n  Operator:    Adriatic Wings (ADW) — T2, credit OK\n  Registry:    9H-ADW\n  Airport:     LEMD\n  Movement:    departure 14 JUN — PN2606032 live\n  Services asked: cancel 4 rooms at Hotel Borealis Madrid (partial — handling/transport/catering stand)\n\nWhat the human needs to decide / supply:\n  - Contact Hotel Borealis Madrid to release the 4 rooms; capture any fee.\n  - Confirm back to the operator. Leave handling / transport / catering untouched.\n\nOriginal email: samples/inbound/E03-remove-service.md\nI cancelled nothing. The hotel has not been contacted.",
       "route_to": "ops-desk@apextrip.example",
       "trip_record": "OPERATION  —   status: ESCALATED\noperator:  Adriatic Wings (ADW)\nservices:  NOT-CONTACTED\nreason:    CANCELLATION",
       "spine": [
@@ -2900,7 +2900,7 @@
       "log": {
         "spine": "S0 operational · S1 ADW (T2, Part 135, credit OK) · S2 AMENDMENT: cancel booked work → ESCALATE",
         "actions": 0,
-        "flags": "only the hotel is affected; do not touch handling, transport, or catering on PN2606031"
+        "flags": "only the hotel is affected; do not touch handling, transport, or catering on PN2606032"
       },
       "node_detail": {
         "S0": "operational",
@@ -4584,7 +4584,7 @@
       "inbound": "Re: 9H-ADW | LEMD | DEPARTURE 14 JUN — HANDLING + HOTEL + TRANSPORT + CATERING",
       "spine": "S0 operational · S1 ADW (T2, Part 135, credit OK) · S2 AMENDMENT: cancel booked work → ESCALATE",
       "actions": 0,
-      "flags": "only the hotel is affected; do not touch handling, transport, or catering on PN2606031"
+      "flags": "only the hotel is affected; do not touch handling, transport, or catering on PN2606032"
     },
     {
       "date": "09JUN2026",

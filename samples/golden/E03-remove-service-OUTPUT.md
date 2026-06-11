@@ -14,7 +14,7 @@ REASON: CANCELLATION
 ━━ ESCALATE · CANCELLATION → ops-desk@apextrip.example ━━
 
 Why (each trigger is sufficient on its own):
-  - CANCELLATION (partial) — the 4 hotel rooms on PN2606031 were a confirmed booking under a corporate card; cancelling may incur a hotel fee and needs a human to action with the property. Adding work auto-handles; cancelling confirmed work does not.
+  - CANCELLATION (partial) — the 4 hotel rooms on PN2606032 were a confirmed booking under a corporate card; cancelling may incur a hotel fee and needs a human to action with the property. Adding work auto-handles; cancelling confirmed work does not.
 
 ```
 ESCALATION — HUMAN ACTION REQUIRED
@@ -26,7 +26,7 @@ What I read:
   Operator:    Adriatic Wings (ADW) — T2, credit OK
   Registry:    9H-ADW
   Airport:     LEMD
-  Movement:    departure 14 JUN — PN2606031 live
+  Movement:    departure 14 JUN — PN2606032 live
   Services asked: cancel 4 rooms at Hotel Borealis Madrid (partial — handling/transport/catering stand)
 
 What the human needs to decide / supply:

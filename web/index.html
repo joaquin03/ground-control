@@ -23,9 +23,9 @@
       </a>
       <div class="links">
         <a href="#problem">What it is</a>
+        <a href="#process">What it does</a>
         <a href="#spine">How it works</a>
         <a href="#trust">Security</a>
-        <a href="#eval">Tested</a>
       </div>
       <a class="btn btn-primary cta" href="console.html">Open the console <span class="arr" aria-hidden="true">&rarr;</span></a>
     </div>
@@ -87,6 +87,59 @@
           </div>
         </div>
         <p class="pain">The inbox mixes real trip requests, last-minute changes, provider replies, and a lot of noise. Each message is a decision made under time pressure. Get a detail wrong, cancel booked work, or miss a credit hold, and it costs money or a client. <b>Ground Control is the operator that triages and runs that inbox.</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- process: the four moves, 4h by hand -> ~3 min -->
+  <section class="band process" id="process">
+    <div class="shell">
+      <div class="sec-head reveal">
+        <h2>What took an operator up to four hours, in about three minutes.</h2>
+        <p>One inbound email. Ground Control runs the same four moves a desk officer would, end to end, then stages the result for a single human approval.</p>
+      </div>
+
+      <div class="timebar reveal" aria-label="The same handling trip, by hand versus Ground Control">
+        <div class="track"><span class="gc"></span></div>
+        <div class="tlabels">
+          <span class="t gc"><b>about 3 min</b> Ground Control, staged for approval</span>
+          <span class="t hand"><b>up to 4 h</b> the same trip, worked by hand</span>
+        </div>
+      </div>
+
+      <div class="steps-pipe reveal">
+        <div class="step">
+          <div class="sn">01</div>
+          <div class="sc">
+            <h3>Validate the sender</h3>
+            <p>Confirm it is a known operator in good standing before a word of the body is read. An unknown or spoofed sender stops right here.</p>
+            <div class="art">From: &rarr; operator-registry</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="sn">02</div>
+          <div class="sc">
+            <h3>Read the trip</h3>
+            <p>Classify the email, then pull the flight skeleton: operator, aircraft, ICAO airports, UTC times, people on board.</p>
+            <div class="art">T7-FCX · SUMU · 12 JUN 1400Z</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="sn">03</div>
+          <div class="sc">
+            <h3>Match the services</h3>
+            <p>Detect what the trip needs, then resolve a provider for each one at that airport. Handling is the anchor the rest attaches to.</p>
+            <div class="art">handling + transport &rarr; SUMU</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="sn">04</div>
+          <div class="sc">
+            <h3>Draft the operation</h3>
+            <p>Fill the right template per provider and assemble one operation under a single reference, staged for a human to release.</p>
+            <div class="art">2 drafts + 1 ack · PN2606014</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -188,17 +241,15 @@
     </div>
   </section>
 
-  <!-- eval -->
-  <section class="band eval" id="eval" style="padding-top:0">
+  <!-- proof: compact verified strip (eval, de-emphasized) -->
+  <section class="band proof" id="eval" style="padding-top:0">
     <div class="shell">
-      <div class="sec-head reveal" style="margin-bottom:34px">
-        <p class="eyebrow">How we know it works</p>
-        <h2>Every decision is pinned to a golden answer.</h2>
-        <p>A regression harness replays all <span data-stat="total">29</span> sample emails, including the adversarial ones that spoof a sender or smuggle an instruction, and checks the machine header and the full card against the expected output. Nothing ships until the set is green.</p>
-      </div>
-      <div class="eval-grid reveal">
-        <div class="eval-checks" id="eval-layers"></div>
-        <div class="terminal" id="eval-terminal"></div>
+      <div class="proofbar reveal">
+        <div class="pl">
+          <span class="badge handle"><span class="dot"></span>Verified</span>
+          <p>Every decision is pinned to a golden answer. A regression harness replays all <span data-stat="total">29</span> sample emails, including the <span data-stat="adversarial">5</span> adversarial ones, and re-checks each machine header and card on every change.</p>
+        </div>
+        <div class="pcmd" id="eval-mini"></div>
       </div>
     </div>
   </section>

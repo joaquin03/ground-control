@@ -99,39 +99,16 @@
     });
   })();
 
-  /* ---- eval: live regression-harness readout ---- */
+  /* ---- eval: compact live regression-harness readout (de-emphasized) ---- */
   (function evalBlock() {
     var e = GC.eval;
     if (!e) return;
-    var lay = document.getElementById("eval-layers");
-    if (lay) {
-      lay.innerHTML =
-        (e.layers || []).map(function (L, i) {
-          return '<div class="layer"><div class="k"><span class="n">' +
-            String(i + 1).padStart(2, "0") + '</span>' + esc(L.k) + '</div>' +
-            '<div class="v">' + esc(L.v) + '</div></div>';
-        }).join("") +
-        '<div class="guards">' + (e.guards || []).map(function (g) {
-          return '<span class="chip">' + esc(g) + ' <b>' + ((e.guard_counts || {})[g] || 0) + '</b></span>';
-        }).join("") + '</div>';
-    }
-    var term = document.getElementById("eval-terminal");
-    if (term) {
-      var body = '<div class="cmd"><span class="pr">$</span> ' + esc(e.command) + '</div>';
-      body += (e.pass_lines || []).map(function (l) {
-        var m = l.match(/^PASS\s+(\S+)\s*(\(soft:.*\))?/);
-        var id = m ? m[1] : l;
-        var soft = m && m[2] ? m[2] : "";
-        return '<div class="pl"><span class="ok">PASS</span> <span class="id">' + esc(id) +
-          '</span> <span class="soft">' + esc(soft) + '</span></div>';
-      }).join("");
-      body += '<div class="sum">' + esc(e.summary) + '</div>';
-      term.innerHTML =
-        '<div class="tbar"><span class="lights"><i></i><i></i><i></i></span>' +
-        '<span class="ttl">run_eval.py</span>' +
-        '<span class="pass">' + (e.ok ? e.passed + ' / ' + e.total + ' PASS' : 'see output') + '</span></div>' +
-        '<div class="tbody">' + body + '</div>';
-    }
+    var mini = document.getElementById("eval-mini");
+    if (!mini) return;
+    mini.innerHTML =
+      '<div class="cmd"><span class="pr0">$</span> ' + esc(e.command) + '</div>' +
+      '<div class="res"><span class="ok">' + (e.ok ? "ALL PASS" : "see output") +
+      '</span> <b>' + esc(e.passed) + ' / ' + esc(e.total) + '</b> golden cases green</div>';
   })();
 
   /* ---- scroll reveals (IntersectionObserver, no scroll handlers) ---- */

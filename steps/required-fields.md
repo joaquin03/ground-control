@@ -63,7 +63,10 @@ Legend: **H** = hard-required (missing ⇒ escalate/ask) · **S** = soft (procee
 1. Check operation-level minimum first. Fail → `INCOMPLETE_SKELETON`, escalate (or reply asking for
    the missing field).
 2. For each requested service, check its hard-required fields. If a hard field is missing and cannot
-   be safely inferred → do not draft that service; escalate or ask for it.
+   be safely inferred → do not draft that service; escalate or ask for it. **Exception:** a service
+   that will be FLAGGED anyway (no provider on file, Step 5) defers its hard-field check — the missing
+   field rides on the FLAGGED line for the human who sources the provider (e.g. Sample 12: catering
+   with no EGGW provider and no delivery time → FLAGGED, not `INCOMPLETE_SKELETON`).
 3. Missing **soft** fields never block a draft — infer, or set the line to `TBC`
    (see `steps/status-vocabulary.md`).
 

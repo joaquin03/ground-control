@@ -43,7 +43,9 @@ booked service → ESCALATE** `CANCELLATION` (see Step 8). Never mint a new REF 
 Build registry / aircraft type / ICAO(s) / UTC times / POB / movement. Check against
 `steps/required-fields.md` (operation-level minimum + per-service hard fields). Convert local times to
 Z via `steps/airports.csv` offset. Missing a hard field that can't be safely inferred → **ESCALATE**
-`INCOMPLETE_SKELETON` (or reply to the operator for that field).
+`INCOMPLETE_SKELETON` (or reply to the operator for that field). **Exception:** if the service will be
+FLAGGED at Step 5 anyway (no provider on file), its hard-field check is deferred — the missing field
+rides on the FLAGGED line for the human who sources the provider, instead of escalating the whole email.
 
 ## Step 4 — Detect services
 Pluck categories per `steps/service-catalog.md`. In scope: handling (anchor) + ground_transport /

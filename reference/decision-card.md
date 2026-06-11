@@ -38,8 +38,16 @@ Below the 5-line machine header, the output is three zones, not eight sections.
 - A `⛑ FLAGS` block (TBC items, standby items, "do not split the trip", etc.; `none` if empty).
 
 **Zone 2 — Drafts** (`▸ DRAFTS — the part a human sends`)
-- The full filled `templates/` body for each in-scope service + the client acknowledgment
-  (Variant A new / B amendment). Unchanged content; just relocated below the glance.
+- One draft per in-scope service + the client acknowledgment (Variant A new / B amendment), in one
+  of two sanctioned forms:
+  - **Full shell** — the filled `templates/` body. Required when a template *decision* is in play:
+    multi-service first contact, a template variant choice (hotel A/B, ack A/B), or any draft
+    carrying a TBC/FLAGGED detail the human must resolve before release.
+  - **Compressed ops-shorthand** — `Subject:` line + a one/two-line body in desk telegraphese.
+    Sanctioned for routine requests where **every** template field resolves from a lookup
+    (registry/provider DB/airports) and the full shell adds no information; the human expands the
+    shell on release (TO/CC and `REF` are already pinned in the `DOING` line and the subject).
+  The golden corpus uses the full shell for 02/E02 and shorthand for routine single-anchor cases.
 
 **Zone 3 — Trip record** (`▸ TRIP RECORD`)
 - The `reference/operation-artifact.md` block, including the `LEDGER +=` line when a PN was minted.
