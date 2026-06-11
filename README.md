@@ -6,6 +6,8 @@
 > ready to send** — or a clean escalation brief. You come back to work done or correctly flagged, never
 > to a question.
 
+**▶ Watch it work — the 90-second walkthrough:** https://www.loom.com/share/58958951bb9b43ef8551d3f29c720b8a
+
 Built with the Clift **Interpretable Context Methodology** (folders as architecture, each file one job).
 Fictional "Apex Trip Support" demo data — every operator, provider, and contact is invented; ICAO codes
 are real public reference data.
