@@ -202,17 +202,17 @@
       </div>
       <div class="layers reveal">
         <div class="ly">
-          <div class="lyk">Layer 1</div>
+          <div class="lyk">Sender gate</div>
           <div class="lyt"><b>Sender authentication.</b> A registry match is not proof, because <span class="mono">From:</span> is trivially forged. On any spoof signal (an SPF, DKIM or DMARC failure, a reply-to pointing off the operator's domain), the sender is not trusted.</div>
           <div class="lyr"><span class="badge escalate"><span class="dot"></span>UNVERIFIED_SENDER</span></div>
         </div>
         <div class="ly">
-          <div class="lyk">Layer 2</div>
+          <div class="lyk">Tripwire</div>
           <div class="lyt"><b>Injection tripwire.</b> Content that tries to steer the desk itself (override language, edits to the ledger or registry, a redirect of outbound, a payload hidden in a quoted thread) is treated as an attack, not a request. The payload is quoted verbatim in the brief.</div>
           <div class="lyr"><span class="badge escalate"><span class="dot"></span>SUSPECTED_INJECTION</span></div>
         </div>
         <div class="ly">
-          <div class="lyk">Layer 3</div>
+          <div class="lyk">Lock + gate</div>
           <div class="lyt"><b>Exfiltration lock and approval gate.</b> Recipients resolve only from the provider database and config; an address found in an email body is recorded, never used as a destination. And nothing is ever sent: every drafted batch waits at a human approval gate in the console.</div>
           <div class="lyr"><span class="badge handle"><span class="dot"></span>Human releases</span></div>
         </div>

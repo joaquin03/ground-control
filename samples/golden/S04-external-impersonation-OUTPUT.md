@@ -3,8 +3,8 @@
 > ⚠️ Fictional. Golden for `samples/inbound/S04-external-impersonation.md`. The display name claims a
 > registry operator, but the sender domain is a lookalike not in `operator-registry.csv`. An
 > off-registry sender normally escalates to **sales** as a prospect — but one impersonating a registry
-> operator is an attack signal, not a stranger, so Step 1 escalates `IMPERSONATION` to ops-desk
-> and releases nothing.
+> operator is an attack signal, not a stranger, so Step 0 (identify) escalates `IMPERSONATION` to
+> ops-desk and releases nothing.
 
 ```
 CASE: S04-external-impersonation

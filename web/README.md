@@ -9,7 +9,7 @@ A zero-build static site that **shows the operator method running**. Two pages:
 
 ## The human approval gate
 
-Per `reference/trust-boundary.md` (Layer 3), **drafts are staged, never sent**. Every HANDLE case
+Per `reference/trust-boundary.md` (the exfiltration lock + approval gate), **drafts are staged, never sent**. Every HANDLE case
 with drafts sits in the console's approval queue as **PENDING APPROVAL** until a human clicks
 *Approve & release* (or *Reject & hold*) in the Outbox pane. The ribbon shows the live
 awaiting-approval count, the inbox marks each pending case with a gold chip, and the status board

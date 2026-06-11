@@ -18,8 +18,8 @@ envelope: `From:`, `Reply-To:`, auth headers, bulk markers. Match the `From:` do
   `Precedence: bulk`, MAILER-DAEMON, auto-reply headers) → **DROP** (noise). Machine mail has no
   sender to validate; it never reaches a human queue.
 - **Registry domain with a spoof signal** (auth-fail header, off-registry `Reply-To`, name/domain
-  mismatch — `reference/trust-boundary.md`) → **ESCALATE** `UNVERIFIED_SENDER` (ops_desk). The match is
-  void until the sender authenticates.
+  mismatch) → **ESCALATE** `UNVERIFIED_SENDER` (ops_desk). The match is void until the sender
+  authenticates.
 - **Off-registry but impersonating a registry operator** (display name claims a registry operator, or a
   lookalike of a registry domain) → **ESCALATE** `IMPERSONATION` (ops_desk). An attack signal, not a
   stranger — never drop it; release nothing.
@@ -27,8 +27,10 @@ envelope: `From:`, `Reply-To:`, auth headers, bulk markers. Match the `From:` do
   stranger is a potential client, not noise — route to sales for onboarding + credit check, with the
   email quoted in the briefing. **Content-blind**: no intent, service, or pricing analysis; no provider
   contacted; nothing handled on an unverified first email.
-- **Known provider** (`steps/provider-database.csv` domain) → pass; provider correspondence is
-  classified at Step 1 (a confirmation on a live trip is FYI).
+- **Known provider** — the `From:` **domain** matches the domain of any `provider_email` in
+  `steps/provider-database.csv` (domain match, never exact-address: ops@ and billing@ at the same
+  provider are the same sender) → pass; provider correspondence is classified at Step 1 (a
+  confirmation on a live trip is FYI).
 - **Registry match clean** → pull tier, credit_status, type_of_flight, manages_permits, payment_profile.
   **Escalate immediately** if: Military → `MILITARY_OPERATOR`; Diplomatic/State → `DIPLOMATIC_OPERATOR`;
   credit HOLD → `NO_CREDIT`; third-party "on behalf of" without verified authority → `UNVERIFIED_AUTHORITY`.

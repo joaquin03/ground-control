@@ -78,8 +78,8 @@
     var host = document.getElementById("spine-flow");
     if (!host || !GC.spine_def) return;
     var branch = {
-      S0: "→ <b>DROP</b> noise / billing &nbsp;·&nbsp; FYI",
-      S1: "→ <b>ESCALATE</b> unknown / spoofed sender / military / diplomatic / credit hold",
+      S0: "→ <b>ESCALATE</b> unknown / spoofed / military / diplomatic / credit hold &nbsp;·&nbsp; <b>DROP</b> bulk mail",
+      S1: "→ <b>DROP</b> internal / billing &nbsp;·&nbsp; FYI",
       S2: "→ <b>ESCALATE</b> cancel booked work",
       S3: "→ <b>ESCALATE</b> incomplete skeleton",
       S4: "→ <b>ESCALATE</b> permit / fuel / flight-plan / no anchor",

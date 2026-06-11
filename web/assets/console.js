@@ -15,7 +15,7 @@
     });
   }
 
-  /* ---------- human approval gate (trust boundary, Layer 3) ----------
+  /* ---------- human approval gate (trust boundary: exfiltration lock) ----------
      Drafts are staged, never sent: every HANDLE case with drafts sits in the
      approval queue until a human releases or holds it. Demo state persists in
      localStorage; in a wired desk this would be the runtime's send gate. */
@@ -247,7 +247,7 @@
           '<span class="as">' + (st === "pending" ? "PENDING APPROVAL"
                                : st === "approved" ? "APPROVED · RELEASED" : "REJECTED · HELD") + '</span></div>' +
         '<div class="ad">' + (st === "pending"
-            ? "Drafts are staged, never sent (trust boundary, Layer 3). Review the " +
+            ? "Drafts are staged, never sent (trust boundary: approval gate). Review the " +
               c.drafts.length + " draft" + (c.drafts.length === 1 ? "" : "s") +
               " below. Nothing leaves the desk until a human releases it."
             : st === "approved"
