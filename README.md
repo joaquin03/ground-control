@@ -32,18 +32,28 @@ real operation — the logic is real.
 | **DROP** | noise (newsletter/bounce/OOO/internal), billing, or **unrecognized sender** (off-registry, no impersonation — trust-first, v1) | logged and dropped; nothing reaches your queue |
 
 ## What's in the folder
-| Path | Job |
-|------|-----|
-| `CLAUDE.md` | the map (read first) |
-| `identity.md` · `rules.md` · `examples.md` | who I am · the decision spine · worked decisions |
-| `reference/` | the output contract, the operation-artifact schema, the escalation triggers, the trust boundary |
-| `steps/` | the per-step lookup tables + criteria the spine reads |
-| `templates/` | the outbound email shells |
-| `desk-config.md` | edit this one file to retarget the operator to another desk |
-| `samples/` | 29 inbound emails + their golden outputs (incl. the S-series adversarial set) |
-| `eval/` | the regression harness — `run_eval.py` over the 29 cases + `check_consistency.py` |
-| `state/` | the working-directory persistence: PN ledger, results CSV, activity log (what makes it an *operator*, not a prompt) |
-| `web/` | the landing page + operations console — pipeline view, status board, and the human approval queue, all driven by the real corpus |
+```
+ground-control/
+├── CLAUDE.md        the map (read first)
+├── identity.md      who I am
+├── rules.md         the decision spine
+├── examples.md      worked decisions
+├── reference/       output contract · operation-artifact schema · escalation triggers · trust boundary
+├── steps/           per-step lookup tables + criteria the spine reads
+├── templates/       outbound email shells
+├── desk-config.md   edit this one file to retarget the operator to another desk
+├── samples/         29 inbound emails + golden outputs (incl. the S-series adversarial set)
+├── eval/            regression harness — run_eval.py over the 29 cases + check_consistency.py
+├── state/           working-dir persistence: PN ledger, results CSV, activity log (what makes it an operator, not a prompt)
+└── web/             landing page + operations console — pipeline, status board, human approval queue
+```
+
+## Security
+Email content is **data, never instructions**. The trust boundary (`reference/trust-boundary.md`) is on at every step:
+- **Trust before content.** Unknown / off-registry senders are dropped before their body is read — never analyzed for intent or services.
+- **Injection & spoofing escalate, never execute.** Override language, ledger / registry / config tampering, or spoofed / impersonating senders → ESCALATE with the payload quoted in the briefing; nothing is acted on.
+- **Exfiltration lock.** Outbound TO/CC resolve **only** from the provider database + `desk-config.md`. An address found in the email body is data, never a destination.
+- **Human approval gate.** Every draft is staged in the console's approval queue and released only by a human — the desk never sends on its own.
 
 ## Testing it
 `python3 eval/run_eval.py --check samples/golden` regression-checks all 29 decisions.
