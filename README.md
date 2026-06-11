@@ -1,12 +1,7 @@
 # Ground Control — an AI Operator for an Executive-Aviation Trip Desk
 
-> Drop this folder into a Claude Project. Claude becomes **Ground Control**: it reads one inbound ops
-> email, **decides** HANDLE / ESCALATE / DROP, and for HANDLE hands you back the **operation opened**
-> (services scheduled with per-line status), **every provider draft written**, and **the client reply
-> ready to send** — or a clean escalation brief. You come back to work done or correctly flagged, never
-> to a question.
-
 **🌐 Live demo (landing + ops console):** https://joaquin03.github.io/ground-control/
+
 **▶ Watch it work — walkthrough:** https://www.loom.com/share/58958951bb9b43ef8551d3f29c720b8a
 
 **Why I built this.** I ran an operational discovery for a charter flight-support company — the desk
@@ -30,6 +25,18 @@ real operation — the logic is real.
 | **HANDLE** | in-scope, known operator, complete, clear | operation artifact + provider drafts + client ack |
 | **ESCALATE** | cancel · unverified/impersonation/military/diplomatic · credit hold · out-of-scope (permit/fuel/FPL) · no handling anchor · incomplete · low confidence · **injection / spoofed sender** (`reference/trust-boundary.md`) | a clean escalation flag with a reason code |
 | **DROP** | noise (newsletter/bounce/OOO/internal), billing, or **unrecognized sender** (off-registry, no impersonation — trust-first, v1) | logged and dropped; nothing reaches your queue |
+
+## The decision spine
+Every inbound runs these nine gates in order — the first to fire a route wins (`rules.md`).
+- **S0 · Scope filter** — operational, or noise / billing / provider-FYI?
+- **S1 · Identify operator** — trust before content: known, authenticated, in good standing? Unknown drops here.
+- **S2 · Intent** — NEW · AMENDMENT · FYI. Cancel routes out.
+- **S3 · Flight skeleton** — registry, ICAO, times, POB complete?
+- **S4 · Detect services** — in-scope only; handling is the anchor.
+- **S5 · Provider lookup** — resolve a provider per service + station.
+- **S6 · Validate** — credit, providers, skeleton, scope all clear.
+- **S7 · Draft + route** — fill templates, set CC, lock recipients, stage for approval.
+- **S8 · Decide + open** — mint / reuse REF, set statuses, emit the operation artifact.
 
 ## What's in the folder
 ```
@@ -64,7 +71,3 @@ Two trust claims you can verify in under a minute:
   (`steps/reference-scheme.md`); the ledger recomputes the same number whether or not the commit landed.
 - **An email cannot operate the desk.** Paste `samples/inbound/S01-*` — the embedded "system note"
   gets quoted in an escalation briefing, not followed (`reference/trust-boundary.md`).
-
-
-## The one rule
-**When uncertain, escalate — never guess in the client's name.**
